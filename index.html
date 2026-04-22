@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>福大085403 · 考研绩点全计划 (精准版)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background: #f5f9ff;
+            padding: 20px 18px 40px;
+            color: #0b2b44;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #d9e9ff;
+            color: #0f3b6a;
+            padding: 5px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .correction-note {
+            background: #fff3cd;
+            border-left: 6px solid #e6a700;
+            padding: 14px 20px;
+            border-radius: 18px;
+            margin: 16px 0 8px;
+            font-weight: 500;
+        }
+        .nav-section {
+            margin: 18px 0 12px;
+        }
+        .nav-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #4a6582;
+            margin-bottom: 8px;
+        }
+        .nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 48px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #d9e4f0;
+        }
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 40px;
+            color: #1e3a5f;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .nav-btn i { margin-right: 6px; }
+        .nav-btn:hover { background: #e2edfc; }
+        .nav-btn.active {
+            background: #1e4a7a;
+            color: white;
+            box-shadow: 0 4px 10px rgba(30,74,122,0.2);
+        }
+        .special-bar { background: #ecf3fa; border: 1px dashed #6d94b8; }
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 22px;
+        }
+        @media (max-width: 850px) {
+            .dashboard { grid-template-columns: 1fr; }
+        }
+        .schedule-card {
+            background: white;
+            border-radius: 28px;
+            padding: 22px 20px;
+            box-shadow: 0 14px 28px -10px rgba(0,20,50,0.06);
+            border: 1px solid #e3ecf5;
+        }
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+        }
+        .day-header h2 { font-size: 1.7rem; font-weight: 700; }
+        .special-tag {
+            background: #fb8b2c20;
+            color: #a14500;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            max-height: 520px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .timeline-item {
+            display: flex;
+            padding: 9px 0;
+            border-bottom: 1px solid #ecf3fa;
+            font-size: 0.9rem;
+        }
+        .time {
+            min-width: 115px;
+            font-weight: 650;
+            color: #1e4a7a;
+        }
+        .activity {
+            flex: 1;
+            font-weight: 500;
+        }
+        .note-badge {
+            display: inline-block;
+            background: #f0f7ff;
+            padding: 2px 10px;
+            border-radius: 24px;
+            font-size: 0.75rem;
+            color: #365073;
+            margin-left: 8px;
+            font-weight: 400;
+        }
+        .info-panel { display: flex; flex-direction: column; gap: 18px; }
+        .info-card {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid #e3ecf5;
+        }
+        .info-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid #e7eef8;
+            padding-bottom: 10px;
+        }
+        .tip-list { list-style: none; }
+        .tip-list li {
+            margin-bottom: 10px;
+            display: flex;
+            gap: 12px;
+            font-size: 0.9rem;
+        }
+        .word-block {
+            background: #e1ecfe;
+            border-radius: 18px;
+            padding: 16px;
+            margin: 16px 0 8px;
+        }
+        .progress-row {
+            background: #f4f9ff;
+            padding: 12px 14px;
+            border-radius: 18px;
+            margin: 10px 0;
+        }
+        .pushup-box {
+            background: #0f2b44;
+            color: white;
+            padding: 16px 18px;
+            border-radius: 24px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #54708f;
+            font-size: 0.9rem;
+        }
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 12px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>
+            <i class="fas fa-microchip"></i> 福大085403 · 绩优考研全计划
+            <span class="badge"><i class="far fa-calendar-check"></i> 2026.4.23(周四)正式启动</span>
+        </h1>
+        <div class="correction-note">
+            <i class="fas fa-exclamation-circle"></i> <strong>精准修正：</strong>2026年4月23日为<strong>星期四</strong>，原文档周二启动已按实际校正。以下作息表100%忠实于原计划文本，并补充特殊情况。
+        </div>
+    </div>
+
+    <!-- 导航 -->
+    <div class="nav-section">
+        <div class="nav-label"><i class="fas fa-calendar-alt"></i> 常规周历 · 点击切换</div>
+        <div class="nav-bar" id="weekNav">
+            <button class="nav-btn" data-day="monday"><i class="far fa-sun"></i> 周一</button>
+            <button class="nav-btn" data-day="tuesday"><i class="far fa-sun"></i> 周二</button>
+            <button class="nav-btn" data-day="wednesday"><i class="far fa-sun"></i> 周三</button>
+            <button class="nav-btn active" data-day="thursday"><i class="fas fa-rocket"></i> 周四(4.23启动)</button>
+            <button class="nav-btn" data-day="friday"><i class="far fa-sun"></i> 周五</button>
+            <button class="nav-btn" data-day="saturday"><i class="far fa-sun"></i> 周六</button>
+            <button class="nav-btn" data-day="sunday"><i class="far fa-sun"></i> 周日</button>
+        </div>
+    </div>
+    <div class="nav-section">
+        <div class="nav-label"><i class="fas fa-shield"></i> 特殊情况 · 应急时间表</div>
+        <div class="nav-bar special-bar" id="specialNav">
+            <button class="nav-btn" data-special="makeupHomework"><i class="fas fa-pencil-alt"></i> 补作业日</button>
+            <button class="nav-btn" data-special="makeupClass"><i class="fas fa-chalkboard"></i> 补课日</button>
+            <button class="nav-btn" data-special="exam3days"><i class="fas fa-hourglass-end"></i> 考前3天应急</button>
+            <button class="nav-btn" data-special="finalWeek"><i class="fas fa-trophy"></i> 期末冲刺周</button>
+            <button class="nav-btn" data-special="today"><i class="fas fa-calendar-check"></i> 📍 今日(周四启动)</button>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="schedule-card">
+            <div class="day-header">
+                <h2 id="dayName">周四 · 4.23 启动日</h2>
+                <span id="dayExtra" class="special-tag">第八周 · 满课 · 数学黄金3h</span>
+            </div>
+            <div id="timelineContainer" class="timeline"></div>
+            <div style="margin-top: 18px; background: #f4faff; border-radius: 18px; padding: 14px; font-size:0.9rem;">
+                <i class="fas fa-lightbulb" style="color:#e6a700;"></i> <span id="inlineHint"></span>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <div class="info-card">
+                <h3><i class="fas fa-bell"></i> 今日重点·注意事项</h3>
+                <ul class="tip-list" id="focusTips"></ul>
+                <div class="word-block">
+                    <i class="fas fa-book"></i> <strong>📘 刘晓燕单词进度</strong><br>
+                    <span id="wordDetail"></span>
+                </div>
+                <div class="progress-row" id="mathProgress"></div>
+                <div style="margin-top: 10px;">
+                    <i class="fas fa-list-check"></i> <strong>每日打卡(睡前勾选)</strong>
+                    <div class="checklist-grid">
+                        <div><i class="far fa-square"></i> 单词课+复盘</div><div><i class="far fa-square"></i> 数学≥15题</div>
+                        <div><i class="far fa-square"></i> 俯卧撑200</div><div><i class="far fa-square"></i> 844/考点复盘</div>
+                        <div><i class="far fa-square"></i> 午休40min</div><div><i class="far fa-square"></i> 23:00入睡</div>
+                        <div><i class="far fa-square"></i> 上课标注考点</div><div><i class="far fa-square"></i> 结课复习进度</div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-medal"></i> 绩点保障·奖学金</h3>
+                <p><i class="fas fa-check-circle" style="color:#1f7a4b;"></i> 课堂考点标注 · 每日13:30复盘15min · 作业3日内完成</p>
+                <p><i class="fas fa-clock"></i> 结课前2周启动专项复习，考前3天启用应急表。</p>
+                <div style="background: #eef3e8; border-radius: 16px; padding: 12px; margin-top: 12px;">
+                    <i class="fas fa-dumbbell"></i> 俯卧撑200个(10组×20/8组×25)，组间30-45s，下午课后优先。
+                </div>
+            </div>
+            <div class="pushup-box">
+                <i class="fas fa-gem"></i> 铁律：7:30起床 · 12:50-13:30午休 · 23:00入睡 · 数学19-22点不可侵占(除9-10节/考前3天)
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+        <div style="background: white; border-radius: 24px; padding: 18px 20px;">
+            <h4><i class="fas fa-chart-line"></i> 考研数学二·阶段(4.23-6.14)</h4>
+            <div>函数极限→导数→中值定理→不定积分→定积分→微分方程→线代入门</div>
+        </div>
+        <div style="background: white; border-radius: 24px; padding: 18px 20px;">
+            <h4><i class="fas fa-microchip"></i> 福大844电子技术基础</h4>
+            <div>模电:器件/放大/频率/运放 → 数电:逻辑/组合/时序 · 贴合本科课程</div>
+        </div>
+    </div>
+    <div class="footer">
+        ⏱️ 所有内容提取自原计划文档 · 点击导航查看每日精准作息 · 右侧含“学这个课程注意什么”
+    </div>
+</div>
+
+<script>
+    (function(){
+        // ---------- 精准数据 (完全遵照原文档, 但日期校正为周四启动) ----------
+        const regularDays = {
+            monday: {
+                name: '周一', extra: '第八周 · 通信电子电路等',
+                timeline: [
+                    ['7:30','准时起床','闹钟定时'],
+                    ['7:30-8:05','洗漱+早餐','高效完成'],
+                    ['8:10-9:45','第1-2节 课程学习','标注考点'],
+                    ['9:45-10:05','课间休息','远眺补水'],
+                    ['10:05-11:45','第3-4节 课程学习','关注考研相关专业课'],
+                    ['11:45-12:40','午餐','不刷短视频'],
+                    ['12:50-13:30','强制午休','闭眼静养40分钟'],
+                    ['13:30-14:00','清醒+本科考点复盘','≤15分钟'],
+                    ['14:00-15:35','第5-6节/844专业课','无课则电子技术基础'],
+                    ['15:35-15:55','课间休息',''],
+                    ['15:55-17:30','第7-8节/考点梳理或单词复盘',''],
+                    ['17:30-17:50','💪俯卧撑200','分组完成'],
+                    ['17:50-18:30','晚餐+散步',''],
+                    ['18:30-19:00','刘晓燕单词课+当日复盘',''],
+                    ['19:00-22:00','考研数学黄金3h','雷打不动'],
+                    ['22:00-22:20','洗漱',''],
+                    ['22:20-22:40','复盘+次日规划',''],
+                    ['23:00','准时入睡','手机关机']
+                ],
+                tips: ['通信电子电路关联844模电，认真听。','单词课按进度，当日单词当日背。','数学19-22点不可占用。'],
+                word: '周一 lesson推进，当日单词复盘。',
+                math: '数学：函数极限基础；844：半导体器件。',
+                hint: '午休雷打不动 · 数学黄金段 · 俯卧撑下午完成'
+            },
+            tuesday: {
+                name: '周二', extra: '第八周 · 数字图像处理等',
+                timeline: [
+                    ['7:30','准时起床',''],
+                    ['7:30-8:05','洗漱+早餐',''],
+                    ['8:10-9:45','第1-2节 课程','标注考点'],
+                    ['9:45-10:05','课间',''],
+                    ['10:05-11:45','第3-4节 (数字图像处理)','电路基础内容'],
+                    ['11:45-12:40','午餐',''],
+                    ['12:50-13:30','强制午休',''],
+                    ['13:30-14:00','考点复盘','≤15分钟'],
+                    ['14:00-15:35','第5-6节',''],
+                    ['15:35-15:55','课间',''],
+                    ['15:55-17:30','第7-8节',''],
+                    ['17:30-18:00','俯卧撑200',''],
+                    ['18:00-18:30','晚餐+散步',''],
+                    ['18:30-19:00','刘晓燕单词(lesson1后续)','启动日已调整至周四'],
+                    ['19:00-22:00','数学黄金3h',''],
+                    ['22:00-22:20','洗漱',''],
+                    ['22:20-22:40','复盘',''],
+                    ['23:00','入睡','']
+                ],
+                tips: ['数字图像处理电路基础=844前置。','单词课继续拆分lesson。'],
+                word: 'lesson1收尾+lesson2前部',
+                math: '数学：极限连续刷题；844：基本放大电路',
+                hint: '周二满课，数学黄金段坚守。'
+            },
+            wednesday: {
+                name: '周三', extra: '晚间有9-10节',
+                timeline: [
+                    ['7:30','准时起床',''],
+                    ['7:30-8:05','洗漱+早餐',''],
+                    ['8:10-9:45','第1-2节',''],
+                    ['9:45-10:05','课间',''],
+                    ['10:05-11:45','第3-4节',''],
+                    ['11:45-12:40','午餐',''],
+                    ['12:50-13:30','强制午休',''],
+                    ['13:30-14:00','考点复盘',''],
+                    ['14:00-15:35','第5-6节',''],
+                    ['15:35-15:55','课间',''],
+                    ['15:55-17:30','第7-8节',''],
+                    ['17:30-18:20','晚餐+短暂休息',''],
+                    ['18:30-20:05','第9-10节 课程','标注考点'],
+                    ['20:05-20:30','俯卧撑200','晚间完成'],
+                    ['20:30-21:00','刘晓燕单词课+复盘','避让课程'],
+                    ['21:00-22:30','考研数学补学(补足3h)',''],
+                    ['22:30-22:40','洗漱+复盘',''],
+                    ['23:00','准时入睡','']
+                ],
+                tips: ['晚间有课，数学调整至21点后。','单词课后完成。'],
+                word: 'lesson2收尾+lesson3',
+                math: '数学：导数与微分；844：放大电路频率响应',
+                hint: '数学补学保证3h，不熬夜'
+            },
+            thursday: {
+                name: '周四 (4.23启动日)', extra: '第八周 · 满课 · 启动日',
+                timeline: [
+                    ['7:30','准时起床','启动日严格执行'],
+                    ['7:30-8:05','洗漱+早餐',''],
+                    ['8:10-9:45','第1-2节 课程学习','标注考点'],
+                    ['9:45-10:05','课间休息',''],
+                    ['10:05-11:45','第3-4节 课程学习',''],
+                    ['11:45-12:40','午餐',''],
+                    ['12:50-13:30','强制午休',''],
+                    ['13:30-14:00','清醒+上午考点复盘','≤15分钟'],
+                    ['14:00-15:35','第5-6节',''],
+                    ['15:35-15:55','课间',''],
+                    ['15:55-17:30','第7-8节',''],
+                    ['17:30-17:50','俯卧撑200',''],
+                    ['17:50-18:30','晚餐+散步',''],
+                    ['18:30-19:00','刘晓燕单词课(使用说明+lesson1前部)','启动日完成使用说明'],
+                    ['19:00-22:00','考研数学黄金3h','函数极限基础+10题'],
+                    ['22:00-22:20','洗漱',''],
+                    ['22:20-22:40','复盘+次日规划',''],
+                    ['23:00','准时入睡','']
+                ],
+                tips: ['🚀 4.23周四正式启动！今日完成刘晓燕“使用说明”。','数学：梳理函数、极限，做10道基础题。','课堂全程标注考点。'],
+                word: '使用说明(17min)+lesson1前半，当日背诵',
+                math: '数学：函数极限连续；844：半导体器件基础',
+                hint: '启动日严格执行作息，俯卧撑200不拖欠'
+            },
+            friday: {
+                name: '周五', extra: '仅3-4节有课',
+                timeline: [
+                    ['7:30','准时起床',''],
+                    ['7:30-8:05','洗漱+早餐',''],
+                    ['8:05-10:00','844专业课/结课复习','优先结课'],
+                    ['10:05-11:45','第3-4节(数据结构)','标注考点'],
+                    ['11:45-12:40','午餐',''],
+                    ['12:50-13:30','午休',''],
+                    ['13:30-17:00','考研数学系统学习(提前3h)',''],
+                    ['17:00-17:20','俯卧撑200',''],
+                    ['17:20-18:30','晚餐+散步',''],
+                    ['18:30-19:00','本周单词复盘+预习',''],
+                    ['19:00-22:00','844专业课/结课专项复习','周五专属'],
+                    ['22:00-22:20','洗漱',''],
+                    ['22:20-22:40','周复盘+下周规划',''],
+                    ['23:00','入睡','']
+                ],
+                tips: ['上午无课优先844或结课复习。','数据结构逻辑辅助数电。'],
+                word: '本周单词复盘+预习',
+                math: '数学：导数应用；844：集成运放',
+                hint: '周五晚间专属专业课/结课复习'
+            },
+            saturday: {
+                name: '周六', extra: '全天自主',
+                timeline: [
+                    ['7:30','准时起床',''],
+                    ['7:30-8:20','洗漱+早餐+拉伸',''],
+                    ['8:30-11:30','考研数学系统深耕3h',''],
+                    ['11:30-12:30','午餐',''],
+                    ['12:30-13:30','强制午休',''],
+                    ['13:30-16:30','844专业课/结课复习','有结课优先2h'],
+                    ['16:30-16:50','俯卧撑200',''],
+                    ['16:50-18:30','自由放松+晚餐',''],
+                    ['18:30-19:30','刘晓燕完整1节+单词复盘',''],
+                    ['19:30-22:00','灵活攻坚(错题/结课)',''],
+                    ['22:00-22:20','洗漱',''],
+                    ['22:20-22:40','周复盘+周日规划',''],
+                    ['23:00','入睡','']
+                ],
+                tips: ['完整完成一节单词课。','无结课则数学错题+专业课复盘。'],
+                word: '完整lesson+单词闭环',
+                math: '数学：中值定理；844：运放应用',
+                hint: '周六可完整学单词，灵活安排'
+            },
+            sunday: {
+                name: '周日', extra: '复盘规划',
+                timeline: [
+                    ['8:00','自然起床(不晚于8点)',''],
+                    ['8:00-8:30','洗漱+早餐',''],
+                    ['8:30-11:30','考研数学3h','攻克难点'],
+                    ['11:30-12:30','午餐',''],
+                    ['12:30-13:30','午休',''],
+                    ['13:30-16:30','844/结课复习',''],
+                    ['16:30-16:50','俯卧撑200',''],
+                    ['16:50-18:30','放松+晚餐',''],
+                    ['18:30-19:00','单词记忆+预习',''],
+                    ['19:00-22:00','数学错题/结课收尾',''],
+                    ['22:00-22:20','洗漱',''],
+                    ['22:20-22:40','下周完整规划',''],
+                    ['23:00','入睡','']
+                ],
+                tips: ['周日必须完成下周规划，标注结课预警。','单词保温。'],
+                word: '复盘+预习，Unit巩固',
+                math: '数学：定积分；844：数电逻辑基础',
+                hint: '有结课考试优先专项复习'
+            }
+        };
+
+        // 特殊情况 (依据文档7.3/9及原则)
+        const specialCases = {
+            makeupHomework: {
+                name: '📚 补作业日', extra: '优先完成本科作业 · 保障平时分',
+                timeline: [['7:30','起床'],['8:00-11:30','集中补作业/课程设计'],['11:30-12:40','午餐'],['12:50-13:30','午休'],['13:30-17:00','继续补作业'],['17:00-17:20','俯卧撑200'],['17:20-18:30','晚餐'],['18:30-19:00','单词极简保温(10min)'],['19:00-22:00','数学压缩至1.5h(基础题) + 补作业'],['22:00-22:20','洗漱'],['22:20-22:40','复盘'],['23:00','入睡']],
+                tips: ['作业优先，平时分满分。','数学只做基础题保温。'],
+                word: '10分钟核心词复盘', math: '数学保温；844暂停', hint: '作业优先，但作息不变'
+            },
+            makeupClass: {
+                name: '📅 补课日', extra: '临时调课 · 避让考研核心',
+                timeline: [['7:30','起床'],['8:10-11:45','按补课安排上课'],['11:45-12:40','午餐'],['12:50-13:30','午休'],['13:30-17:30','补课/实验'],['17:30-17:50','俯卧撑200'],['17:50-18:30','晚餐'],['18:30-19:00','单词课(可缩减)'],['19:00-22:00','数学尽量保证3h,否则挪后'],['22:00-22:20','洗漱'],['22:20-22:40','复盘'],['23:00','入睡']],
+                tips: ['补课也标注考点。','数学若被占用至少1.5h。'],
+                word: '单词灵活缩减', math: '数学保持手感', hint: '守住作息，数学尽量不丢'
+            },
+            exam3days: {
+                name: '⏳ 考前3天应急', extra: '冲刺高分 · 数学保温',
+                timeline: [['7:30','起床'],['8:00-11:30','结课复习A'],['11:30-12:40','午餐'],['12:50-13:30','午休'],['13:30-17:00','结课复习B'],['17:00-17:15','俯卧撑100~150'],['17:15-18:30','晚餐'],['18:30-19:00','单词10min'],['19:00-22:00','结课冲刺复习'],['22:00-22:20','洗漱'],['22:20-22:40','快速复盘'],['23:00','准时入睡']],
+                tips: ['数学压缩至每日1h保温，只做基础。','所有无课时间给结课。'],
+                word: '10分钟极简保温', math: '数学保温1h；844暂停', hint: '考前3天，绩点第一'
+            },
+            finalWeek: {
+                name: '🏆 期末冲刺周', extra: '6.15-6.28 · 全力冲击奖学金',
+                timeline: [['7:30','起床'],['8:00-11:30','期末科目A'],['11:30-12:30','午餐'],['12:30-13:30','午休'],['13:30-17:00','期末科目B'],['17:00-17:15','俯卧撑100~200'],['17:15-18:30','晚餐'],['18:30-19:00','单词极简'],['19:00-22:00','次日考试冲刺'],['22:00-22:20','洗漱'],['22:20-22:40','复盘'],['23:00','入睡']],
+                tips: ['暂停考研深度，保留单词俯卧撑。'],
+                word: '每日10分钟', math: '数学暂停', hint: '期末周作息不变'
+            },
+            today: {
+                name: '📍 今日 (周四启动)', extra: '4.23 · 按启动日执行',
+                timeline: regularDays.thursday.timeline,
+                tips: regularDays.thursday.tips,
+                word: regularDays.thursday.word,
+                math: regularDays.thursday.math,
+                hint: regularDays.thursday.hint
+            }
+        };
+
+        const dayName = document.getElementById('dayName');
+        const dayExtra = document.getElementById('dayExtra');
+        const timelineDiv = document.getElementById('timelineContainer');
+        const focusTips = document.getElementById('focusTips');
+        const wordDetail = document.getElementById('wordDetail');
+        const mathProgress = document.getElementById('mathProgress');
+        const inlineHint = document.getElementById('inlineHint');
+        const weekBtns = document.querySelectorAll('#weekNav .nav-btn');
+        const specialBtns = document.querySelectorAll('#specialNav .nav-btn');
+
+        function renderTimeline(arr) {
+            let html = '';
+            arr.forEach(item => {
+                let notePart = item[2] ? `<span class="note-badge">${item[2]}</span>` : '';
+                html += `<div class="timeline-item"><div class="time">${item[0]}</div><div class="activity">${item[1]} ${notePart}</div></div>`;
+            });
+            timelineDiv.innerHTML = html;
+        }
+        function setActive(btn, group) { group.forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+        function loadDay(key) {
+            const d = regularDays[key];
+            dayName.textContent = d.name + ' · 精准作息';
+            dayExtra.textContent = d.extra;
+            renderTimeline(d.timeline);
+            focusTips.innerHTML = d.tips.map(t=>`<li><i class="fas fa-angle-right"></i> ${t}</li>`).join('');
+            wordDetail.textContent = d.word;
+            mathProgress.innerHTML = `<i class="fas fa-calculator"></i> <strong>数学+844</strong><br>${d.math}`;
+            inlineHint.textContent = d.hint;
+        }
+        function loadSpecial(key) {
+            const s = specialCases[key];
+            dayName.textContent = s.name; dayExtra.textContent = s.extra;
+            renderTimeline(s.timeline);
+            focusTips.innerHTML = s.tips.map(t=>`<li><i class="fas fa-angle-right"></i> ${t}</li>`).join('');
+            wordDetail.textContent = s.word;
+            mathProgress.innerHTML = `<i class="fas fa-calculator"></i> <strong>今日重点</strong><br>${s.math}`;
+            inlineHint.textContent = s.hint;
+        }
+
+        weekBtns.forEach(btn => btn.addEventListener('click', ()=>{
+            const day = btn.dataset.day;
+            loadDay(day);
+            setActive(btn, weekBtns);
+            specialBtns.forEach(b=>b.classList.remove('active'));
+        }));
+        specialBtns.forEach(btn => btn.addEventListener('click', ()=>{
+            const sp = btn.dataset.special;
+            if(sp === 'today') { loadDay('thursday'); const thu = Array.from(weekBtns).find(b=>b.dataset.day==='thursday'); setActive(thu, weekBtns); }
+            else loadSpecial(sp);
+            setActive(btn, specialBtns);
+            weekBtns.forEach(b=>b.classList.remove('active'));
+        }));
+
+        // 默认周四启动
+        loadDay('thursday');
+        setActive(document.querySelector('[data-day="thursday"]'), weekBtns);
+    })();
+</script>
+</body>
+</html>
